@@ -68,7 +68,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq user-full-name "Curtis Bowman"
-      user-mail-address "c.bowman1711@gmail.com")
+      user-mail-address "curtis@partiallapplied.tech")
 
 (defconst my-font-size (cond ((<= 3840 (display-pixel-width)) 28)
                              ((<= 2560 (display-pixel-width)) 24)
@@ -80,13 +80,26 @@
 
 (setq doom-unicode-font (font-spec :family "MesloLGS NF" :size my-font-size))
 
-(setq doom-theme 'doom-rouge)
+(use-package! doom-themes
+  :config
+  (setq doom-themes-enable-bolt t
+        doom-themes-enable-italic t)
+  (load-theme 'doom-rouge)
+  (doom-themes-visual-bell-config)
+  (doom-themes-org-config))
 
 (setq display-line-numbers-type 'relative)
 
 (when window-system
   (set-frame-position (selected-frame) 0 0)
   (set-frame-size (selected-frame) 159 90))
+
+(use-package! server
+  :config
+  (unless (server-running-p)
+    (server-start))
+
+(use-package! copilot)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;

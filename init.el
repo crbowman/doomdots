@@ -33,10 +33,11 @@
        ;;minimap           ; show a map of the code on the side
        ;;neotree           ; a project drawer, like NERDTree for vim
        ;;zen               ; distraction-free coding or writing
+       ;;tabs              ; a tab bar for Emacs
        indent-guides     ; highlighted indent columns
        hydra             ; keybinding pragmatics
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       tabs              ; a tab bar for Emacs
+
        nav-flash         ; blink cursor line after big motions
        unicode           ; extended unicode support for various languages
        window-select     ; visually switch windows

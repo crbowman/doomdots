@@ -55,3 +55,10 @@
 
 (package! fix-word
   :recipe (:host github :repo "mrkkrp/fix-word"))
+
+(package! server)
+
+(package! copilot
+  :reicpe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+
+(package! undo-tree)
