@@ -49,7 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-
 (package! dired-single
   :recipe (:host github :repo "crocket/dired-single"))
 
@@ -59,6 +58,14 @@
 (package! server)
 
 (package! copilot
-  :reicpe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 
 (package! undo-tree)
+
+(package! centered-window)
+
+(package! openai
+  :recipe (:host github :repo "emacs-openai/openai"))
+
+(package! chatgpt
+  :recipe (:host github :repo "emacs-openai/chatgpt"))

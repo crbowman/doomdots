@@ -22,7 +22,7 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       ;;helm              ; the *other* search engine for love and life
+       helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
        company           ; the ultimate code completion backend
@@ -37,7 +37,6 @@
        indent-guides     ; highlighted indent columns
        hydra             ; keybinding pragmatics
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
-
        nav-flash         ; blink cursor line after big motions
        unicode           ; extended unicode support for various languages
        window-select     ; visually switch windows
@@ -56,20 +55,18 @@
 
        :editor
        ;;(evil +everywhere); (evil +everywhere); come to the dark side, we have cookies
-
        ;;lispy             ; vim for lisp, for people who don't like vim
-
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
+       ;;god               ; run Emacs commands without modifier keys
        multiple-cursors  ; editing in many places at once
        rotate-text       ; cycle region at point between text candidates
-       god               ; run Emacs commands without modifier keys
        (format +onsave)  ; automated prettiness
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
        snippets          ; my elves. They type so I don't have to
        word-wrap         ; soft wrapping with language-aware indent
-
+                         ;
        :emacs
        dired             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
@@ -194,4 +191,4 @@
 
        :config
        ;; literate
-       (default +bindings))
+       (default +bindings +smartparens))
