@@ -30,13 +30,13 @@
 
        :ui
        ;;deft              ; notational velocity for Emacs
-       ;;hydra
-       ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       ;;indent-guides     ; highlighted indent columns
        ;;minimap           ; show a map of the code on the side
        ;;neotree           ; a project drawer, like NERDTree for vim
-       ;;tabs              ; a tab bar for Emacs
        ;;zen               ; distraction-free coding or writing
+       indent-guides     ; highlighted indent columns
+       hydra             ; keybinding pragmatics
+       doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       tabs              ; a tab bar for Emacs
        nav-flash         ; blink cursor line after big motions
        unicode           ; extended unicode support for various languages
        window-select     ; visually switch windows
@@ -191,4 +191,4 @@
 
        :config
        ;; literate
-       (default +bindings +smartparens))
+       (default +bindings))

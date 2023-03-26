@@ -52,3 +52,6 @@
 
 (package! dired-single
   :recipe (:host github :repo "crocket/dired-single"))
+
+(package! fix-word
+  :recipe (:host github :repo "mrkkrp/fix-word"))
