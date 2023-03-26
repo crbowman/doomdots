@@ -80,6 +80,19 @@
 
 (setq doom-unicode-font (font-spec :family "MesloLGS NF" :size my-font-size))
 
+(defvar my-themes '(doom-dracula ;;dark
+                    doom-rouge
+                    deeper-blue
+                    doom-material
+                    doom-laserwave
+                    doom-outrun-electric
+                    doom-dark+
+                    leuven ;;light
+                    tango
+                    solarized-light
+                    tsdh-light
+                    default))
+
 (use-package! doom-themes
   :config
   (setq doom-themes-enable-bolt t
@@ -89,6 +102,8 @@
   (doom-themes-org-config))
 
 (setq display-line-numbers-type 'relative)
+(setq column-number-mode t)
+(setq delete-selection-mode t)
 
 (when window-system
   (set-frame-position (selected-frame) 0 0)
@@ -117,8 +132,9 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;(load (expand-file-name "~/.config/roswell/helper.el"))
-;;(setq inferior-lisp-program "ros -Q run")
+(if (file-exists-p "/home/curtis/.config/roswell/helper.el")
+    (load (expand-file-name "~/.config/roswell/helper.el"))
+    (setq inferior-lisp-program "ros -Q run"))
 
 ;; Smartparens bindings set to be called with SPC + l as prefix
 ;; (map!
@@ -166,5 +182,12 @@
     (global-set-key (kbd "M-l") #'fix-word-downcase)
     (global-set-key (kbd "M-c") #'fix-word-capitalize))
 
-  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode) 
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
   (setq highlight-indent-guides-method 'bitmap)
+
+(use-package! undo-tree
+  :diminish
+  :bind (("C-c _" . undo-tree-visualize))
+  :config
+  (global-undo-tree-mode +1)
+  (undo-tree-auto-save-history))

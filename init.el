@@ -56,12 +56,14 @@
 
        :editor
        ;;(evil +everywhere); (evil +everywhere); come to the dark side, we have cookies
-       ;;god               ; run Emacs commands without modifier keys
+
        ;;lispy             ; vim for lisp, for people who don't like vim
-       ;;multiple-cursors  ; editing in many places at once
+
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
-       ;;rotate-text       ; cycle region at point between text candidates
+       multiple-cursors  ; editing in many places at once
+       rotate-text       ; cycle region at point between text candidates
+       god               ; run Emacs commands without modifier keys
        (format +onsave)  ; automated prettiness
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
