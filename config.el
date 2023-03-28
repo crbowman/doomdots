@@ -179,109 +179,109 @@
       (setq mac-option-modifier 'super)
       (setq mac-function-modifier 'hyper)))
 
-(global-set-key (kbd "<f9>") (lambda ()
-                             (interactive)
-                             (other-window -1)))
-(global-set-key (kbd "<f10>") (lambda ()
-                             (interactive)
-                             (other-window 1)))
+;; (global-set-key (kbd "<f9>") (lambda ()
+;;                              (interactive)
+;;                              (other-window -1)))
+;; (global-set-key (kbd "<f10>") (lambda ()
+;;                              (interactive)
+;;                              (other-window 1)))
 
-;; Use super-<left>|<right>|<up>|<down> to change windows
-(windmove-default-keybindings 'super)
+;; ;; Use super-<left>|<right>|<up>|<down> to change windows
+;; (windmove-default-keybindings 'super)
 
-;; Function Keys
-(global-set-key [f1] 'god-mode-all)
-(global-set-key [C-f1] 'god-mode-all)
-(global-set-key [f2] 'smartparens-strict-mode)
-(global-set-key [f3] 'delete-trailing-whitespace)
-(global-set-key [f4] 'comment-or-uncomment-region)
-(global-set-key [f5] 'dired-single-magic-buffer)
-(global-set-key [C-f5] 'projectile-dired)
-(global-set-key [f6] 'magit-status)
-(global-set-key [f7] '+eshell/toggle)
-(global-set-key [f8] 'treemacs)
-(global-set-key [f9] '+fold/toggle)
-(global-set-key [f10] 'treemacs)
-(global-set-key [f11] 'toggle-frame-fullscreen)
-(global-set-key [f12] 'undo-tree-undo)
-(global-set-key [C-f12] 'vundo)
-(global-set-key [f13] 'call-last-kbd-macro)
-(global-set-key [f14] '+fold/close-all)
-(global-set-key [f15] '+fold/open-all)
-(global-set-key [home] 'beginning-of-buffer)
-(global-set-key [end] 'end-of-buffer)
-;; Logitech G710+ G-keys
-(global-set-key [s-f1] 'isearch-backward)
-(global-set-key [s-f2] 'isearch-forward)
-(global-set-key [s-f3] 'isearch-query-replace)
-(global-set-key [s-f4] 'org-babel-tangle)
+;; ;; Function Keys
+;; (global-set-key [f1] 'god-mode-all)
+;; (global-set-key [C-f1] 'god-mode-all)
+;; (global-set-key [f2] 'smartparens-strict-mode)
+;; (global-set-key [f3] 'delete-trailing-whitespace)
+;; (global-set-key [f4] 'comment-or-uncomment-region)
+;; (global-set-key [f5] 'dired-single-magic-buffer)
+;; (global-set-key [C-f5] 'projectile-dired)
+;; (global-set-key [f6] 'magit-status)
+;; (global-set-key [f7] '+eshell/toggle)
+;; (global-set-key [f8] 'treemacs)
+;; (global-set-key [f9] '+fold/toggle)
+;; (global-set-key [f10] 'treemacs)
+;; (global-set-key [f11] 'toggle-frame-fullscreen)
+;; (global-set-key [f12] 'undo-tree-undo)
+;; (global-set-key [C-f12] 'vundo)
+;; (global-set-key [f13] 'call-last-kbd-macro)
+;; (global-set-key [f14] '+fold/close-all)
+;; (global-set-key [f15] '+fold/open-all)
+;; (global-set-key [home] 'beginning-of-buffer)
+;; (global-set-key [end] 'end-of-buffer)
+;; ;; Logitech G710+ G-keys
+;; (global-set-key [s-f1] 'isearch-backward)
+;; (global-set-key [s-f2] 'isearch-forward)
+;; (global-set-key [s-f3] 'isearch-query-replace)
+;; (global-set-key [s-f4] 'org-babel-tangle)
 
-(map! ("C-w" #'backward-kill-word)
-      ("M-k" #'kill-region))
+;; (map! ("C-w" #'backward-kill-word)
+;;       ("M-k" #'kill-region))
 
-;; Smartparens
-(global-set-key (kbd "C-M-f") 'sp-forward-sexp)
-(global-set-key (kbd "C-M-b") 'sp-backward-sexp)
-(global-set-key (kbd "C-M-d") 'sp-down-sexp)
-(global-set-key (kbd "C-M-a") 'sp-backward-down-sexp)
-(global-set-key (kbd "C-S-d") 'sp-beginning-of-sexp)
-(global-set-key (kbd "C-S-a") 'sp-end-of-sexp)
-(global-set-key (kbd "C-M-e") 'sp-up-sexp)
-(global-set-key (kbd "C-M-u") 'sp-backward-up-sexp)
-(global-set-key (kbd "C-M-t") 'sp-transpose-sexp)
-(global-set-key (kbd "C-M-n") 'sp-forward-hybrid-sexp)
-(global-set-key (kbd "C-M-p") 'sp-backward-hybrid-sexp)
-(global-set-key (kbd "C-M-k") 'sp-kill-sexp)
-(global-set-key (kbd "C-M-w") 'sp-copy-sexp)
-(global-set-key (kbd "M-<delete>") 'sp-unwrap-sexp)
-(global-set-key (kbd "M-<backspace>") 'sp-backward-unwrap-sexp)
-(global-set-key (kbd "C-0") 'sp-forward-slurp-sexp)
-(global-set-key (kbd "C-M-0") 'sp-forward-barf-sexp)
-(global-set-key (kbd "C-9") 'sp-backward-slurp-sexp)
-(global-set-key (kbd "C-M-9") 'sp-backward-barf-sexp)
-(global-set-key (kbd "M-D") 'sp-splice-sexp)
-(global-set-key (kbd "C-M-<delete>") 'sp-splice-sexp-killing-forward)
-(global-set-key (kbd "C-M-<backspace>") 'sp-splice-sexp-killing-backward)
-(global-set-key (kbd "C-S-<backspace>") 'sp-splice-sexp-killing-around)
-(global-set-key (kbd "C-]") 'sp-select-next-thing-exchange)
-(global-set-key (kbd "C-<left_bracket>") 'sp-select-previous-thing)
-(global-set-key (kbd "C-M-]") 'sp-select-next-thing)
-(global-set-key (kbd "M-F") 'sp-forward-symbol)
-(global-set-key (kbd "M-B") 'sp-backward-symbol)
-(global-set-key (kbd "C-\"") 'sp-change-inner)
-(global-set-key (kbd "M-i") 'sp-change-enclosing)
-(bind-key "C-c f" (lambda () (interactive) (sp-beginning-of-sexp 2)) smartparens-mode-map)
-(bind-key "C-c b" (lambda () (interactive) (sp-beginning-of-sexp -2)) smartparens-mode-map)
-(global-set-key (kbd "H-<delete>") (lambda ()
-                                     (smartparens-strict-mode nil)
-                                     (delete-backward-char)
-                                     (smartparens-strict-mode t)))
+;; ;; Smartparens
+;; (global-set-key (kbd "C-M-f") 'sp-forward-sexp)
+;; (global-set-key (kbd "C-M-b") 'sp-backward-sexp)
+;; (global-set-key (kbd "C-M-d") 'sp-down-sexp)
+;; (global-set-key (kbd "C-M-a") 'sp-backward-down-sexp)
+;; (global-set-key (kbd "C-S-d") 'sp-beginning-of-sexp)
+;; (global-set-key (kbd "C-S-a") 'sp-end-of-sexp)
+;; (global-set-key (kbd "C-M-e") 'sp-up-sexp)
+;; (global-set-key (kbd "C-M-u") 'sp-backward-up-sexp)
+;; (global-set-key (kbd "C-M-t") 'sp-transpose-sexp)
+;; (global-set-key (kbd "C-M-n") 'sp-forward-hybrid-sexp)
+;; (global-set-key (kbd "C-M-p") 'sp-backward-hybrid-sexp)
+;; (global-set-key (kbd "C-M-k") 'sp-kill-sexp)
+;; (global-set-key (kbd "C-M-w") 'sp-copy-sexp)
+;; (global-set-key (kbd "M-<delete>") 'sp-unwrap-sexp)
+;; (global-set-key (kbd "M-<backspace>") 'sp-backward-unwrap-sexp)
+;; (global-set-key (kbd "C-0") 'sp-forward-slurp-sexp)
+;; (global-set-key (kbd "C-M-0") 'sp-forward-barf-sexp)
+;; (global-set-key (kbd "C-9") 'sp-backward-slurp-sexp)
+;; (global-set-key (kbd "C-M-9") 'sp-backward-barf-sexp)
+;; (global-set-key (kbd "M-D") 'sp-splice-sexp)
+;; (global-set-key (kbd "C-M-<delete>") 'sp-splice-sexp-killing-forward)
+;; (global-set-key (kbd "C-M-<backspace>") 'sp-splice-sexp-killing-backward)
+;; (global-set-key (kbd "C-S-<backspace>") 'sp-splice-sexp-killing-around)
+;; (global-set-key (kbd "C-]") 'sp-select-next-thing-exchange)
+;; (global-set-key (kbd "C-<left_bracket>") 'sp-select-previous-thing)
+;; (global-set-key (kbd "C-M-]") 'sp-select-next-thing)
+;; (global-set-key (kbd "M-F") 'sp-forward-symbol)
+;; (global-set-key (kbd "M-B") 'sp-backward-symbol)
+;; (global-set-key (kbd "C-\"") 'sp-change-inner)
+;; (global-set-key (kbd "M-i") 'sp-change-enclosing)
+;; (bind-key "C-c f" (lambda () (interactive) (sp-beginning-of-sexp 2)) smartparens-mode-map)
+;; (bind-key "C-c b" (lambda () (interactive) (sp-beginning-of-sexp -2)) smartparens-mode-map)
+;; (global-set-key (kbd "H-<delete>") (lambda ()
+;;                                      (smartparens-strict-mode nil)
+;;                                      (delete-backward-char)
+;;                                      (smartparens-strict-mode t)))
 
-(use-package! fix-word
-    :config
-    (global-set-key (kbd "M-u") #'fix-word-upcase)
-    (global-set-key (kbd "M-l") #'fix-word-downcase)
-    (global-set-key (kbd "M-c") #'fix-word-capitalize))
+;; (use-package! fix-word
+;;     :config
+;;     (global-set-key (kbd "M-u") #'fix-word-upcase)
+;;     (global-set-key (kbd "M-l") #'fix-word-downcase)
+;;     (global-set-key (kbd "M-c") #'fix-word-capitalize))
 
-(use-package! dired-single
-  :config
-  (define-key dired-mode-map [remap dired-find-file]
-     'dired-single-buffer)
-   (define-key dired-mode-map [remap dired-mouse-find-file-other-window]
-     'dired-single-buffer-mouse)
-   (define-key dired-mode-map [remap dired-up-directory]
-     'dired-single-up-directory))
-  ;; (global-set-key [(control f5)]
-  ;;                 (function (lambda nil (interactive)
-  ;;                           (dired-single-magic-buffer default-directory))))
-  ;;(global-set-key [(meta f5)] 'dired-single-toggle-buffer-name)
+;; (use-package! dired-single
+;;   :config
+;;   (define-key dired-mode-map [remap dired-find-file]
+;;      'dired-single-buffer)
+;;    (define-key dired-mode-map [remap dired-mouse-find-file-other-window]
+;;      'dired-single-buffer-mouse)
+;;    (define-key dired-mode-map [remap dired-up-directory]
+;;      'dired-single-up-directory))
+;;   ;; (global-set-key [(control f5)]
+;;   ;;                 (function (lambda nil (interactive)
+;;   ;;                           (dired-single-magic-buffer default-directory))))
+;;   ;;(global-set-key [(meta f5)] 'dired-single-toggle-buffer-name)
 
 
 (defalias 'qrr 'query-replace-regexp)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;                 DIRED HELM COMPANY ETC...
+;;                 DIRED COMPANY ETC...
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
