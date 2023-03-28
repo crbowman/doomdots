@@ -79,14 +79,15 @@
                              ((<= 1440 (display-pixel-height)) 16)
                              ((<= 1080 (display-pixel-height)) 14)))
 
-(defvar my-themes '(doom-dracula ;;dark
+(defvar my-themes '(doom-dracula
                     doom-rouge
                     deeper-blue
                     doom-material
                     doom-laserwave
                     doom-outrun-electric
                     doom-dark+
-                    leuven ;;light
+                    ;;light
+                    leuven
                     tango
                     solarized-light
                     tsdh-light
@@ -96,9 +97,11 @@
 (when window-system
   (set-frame-position (selected-frame) 0 0)
   (set-frame-size (selected-frame)
-                  my-frame-width
+                  (- my-frame-width 16)
                   my-frame-height
                   t))
+
+(setq god-mode nil)
 
 (setq doom-font (font-spec :family "Fira Code" :size my-font-size :weight 'medium)
       doom-variable-pitch-font (font-spec :family "Fira Sans" :size my-font-size))
@@ -106,9 +109,10 @@
 
 (setq display-line-numbers-type 'relative)
 (setq column-number-mode t)
-(setq delete-selection-mode nil)
 (setq display-time-default-load-average nil)
 (setq display-time-mode t)
+(setq delete-selection-mode nil)
+
 (setq doom-modeline-buffer-file-name-style 'relative-from-project)
 
 (use-package! doom-themes
@@ -127,6 +131,19 @@
   :config
   (unless (server-running-p)
     (server-start)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;                                 VTERM
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Install cmake, libtool, and libtool-bin before having emacs compile vterm.
+;;
+;; If there are compilation issues you may have to purge the packages from
+;; ~/.config/emacs/.local/
+
+(setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=no")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -162,7 +179,6 @@
       (setq mac-option-modifier 'super)
       (setq mac-function-modifier 'hyper)))
 
-
 (global-set-key (kbd "<f9>") (lambda ()
                              (interactive)
                              (other-window -1)))
@@ -175,38 +191,33 @@
 
 ;; Function Keys
 (global-set-key [f1] 'god-mode-all)
+(global-set-key [C-f1] 'god-mode-all)
 (global-set-key [f2] 'smartparens-strict-mode)
 (global-set-key [f3] 'delete-trailing-whitespace)
 (global-set-key [f4] 'comment-or-uncomment-region)
-(global-set-key [f5] 'projectile-dired)
+(global-set-key [f5] 'dired-single-magic-buffer)
+(global-set-key [C-f5] 'projectile-dired)
 (global-set-key [f6] 'magit-status)
 (global-set-key [f7] '+eshell/toggle)
 (global-set-key [f8] 'treemacs)
-(global-set-key [f9] ''+fold/toggle)
+(global-set-key [f9] '+fold/toggle)
 (global-set-key [f10] 'treemacs)
 (global-set-key [f11] 'toggle-frame-fullscreen)
 (global-set-key [f12] 'undo-tree-undo)
 (global-set-key [C-f12] 'vundo)
-;;(global-set-key [f13] )
+(global-set-key [f13] 'call-last-kbd-macro)
 (global-set-key [f14] '+fold/close-all)
 (global-set-key [f15] '+fold/open-all)
-
+(global-set-key [home] 'beginning-of-buffer)
+(global-set-key [end] 'end-of-buffer)
 ;; Logitech G710+ G-keys
 (global-set-key [s-f1] 'isearch-backward)
 (global-set-key [s-f2] 'isearch-forward)
 (global-set-key [s-f3] 'isearch-query-replace)
 (global-set-key [s-f4] 'org-babel-tangle)
-(global-set-key (kbd "<s-f5>") (lambda ()
-                               (interactive)
-                               (find-file "~/code/dotfiles/editor/emacs/config.org")))
-(global-set-key (kbd "<s-f6>") (lambda ()
-                               (interactive)
-                               (find-file "~/code/dotfiles/editor/emacs/.myspacemacs")))
 
-(global-set-key [home] 'beginning-of-buffer)
-(global-set-key [end] 'end-of-buffer)
 (map! ("C-w" #'backward-kill-word)
-      ("C-c C-k" #'kill-region))
+      ("M-k" #'kill-region))
 
 ;; Smartparens
 (global-set-key (kbd "C-M-f") 'sp-forward-sexp)
@@ -260,14 +271,11 @@
      'dired-single-buffer-mouse)
    (define-key dired-mode-map [remap dired-up-directory]
      'dired-single-up-directory))
-
-  ;; (global-set-key [(f5)] 'dired-single-magic-buffer)
   ;; (global-set-key [(control f5)]
   ;;                 (function (lambda nil (interactive)
   ;;                           (dired-single-magic-buffer default-directory))))
-  ;; (global-set-key [(meta f5)] 'dired-single-toggle-buffer-name)
+  ;;(global-set-key [(meta f5)] 'dired-single-toggle-buffer-name)
 
-;; (global-set-key [f5] 'call-last-kbd-macro)
 
 (defalias 'qrr 'query-replace-regexp)
 
@@ -363,13 +371,13 @@
 ;; - `chatgpt-animate-text` - Display text gradually instead of output it all at once. (Default: `t`)
 ;; - `chatgpt-animate-fps` - Frame per seconds to display text animation. (Default: `5`)
 
-(use-package! copilot)
+;; (use-package! copilot)
 
-(use-package! openai)
-;;    (setq openai-key "[YOU API KEY]")
-;;    (setq openai-user "[YOUR USER UID]"))
+;; (use-package! openai)
+;; ;;    (setq openai-key "[YOU API KEY]")
+;; ;;    (setq openai-user "[YOUR USER UID]"))
 
-(use-package! chatgpt
-  :config
-  (setq catgpt-max-tokens 2000)
-  (setq catgpt-model "gpt-3.5-turbo"))
+;; (use-package! chatgpt
+;;   :config
+;;   (setq catgpt-max-tokens 2000)
+;;   (setq catgpt-model "gpt-3.5-turbo"))

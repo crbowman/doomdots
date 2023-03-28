@@ -58,7 +58,7 @@
        ;;lispy             ; vim for lisp, for people who don't like vim
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
-       ;;god               ; run Emacs commands without modifier keys
+       god               ; run Emacs commands without modifier keys
        multiple-cursors  ; editing in many places at once
        rotate-text       ; cycle region at point between text candidates
        (format +onsave)  ; automated prettiness
