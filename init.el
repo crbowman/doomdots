@@ -22,7 +22,7 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       helm              ; the *other* search engine for love and life
+       ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
        company           ; the ultimate code completion backend
@@ -66,7 +66,7 @@
        fold              ; (nigh) universal code folding
        snippets          ; my elves. They type so I don't have to
        word-wrap         ; soft wrapping with language-aware indent
-                         ;
+
        :emacs
        dired             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
@@ -184,7 +184,7 @@
        :app
        ;;calendar
        ;;emms
-       ;;everywhere        ; *leave* Emacs!? You must be joking
+       everywhere        ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
