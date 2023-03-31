@@ -70,6 +70,7 @@
 (setq user-full-name "Curtis Bowman"
       user-mail-address "curtis@partiallapplied.tech")
 
+
 (defconst my-frame-width (/ (display-pixel-width) 2))
 (defconst my-frame-height (/ (display-pixel-height) 2))
 
@@ -105,12 +106,16 @@
       doom-variable-pitch-font (font-spec :family "Fira Sans" :size my-font-size))
 (setq doom-unicode-font (font-spec :family "MesloLGS NF" :size my-font-size))
 
+(setq doom-scrath-initial-major-mode 'lisp-interaction-mode)
+(setq fancy-splash-image (concat doom-private-dir "splash.png"))
+;; Prevents some cases of Emacs flickering
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
+
 (setq display-line-numbers-type 'relative)
 (setq column-number-mode t)
-(setq display-time-mode t)
 (setq delete-selection-mode nil)
-(setq evil-default-state 'emacs)
 (setq doom-modeline-buffer-file-name-style 'relative-from-project)
+(setq doom-modeline-time t)
 
 (use-package! doom-themes
   :config
@@ -142,15 +147,6 @@
 
 (setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=no")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;                                   ORG
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(after! org-mode
-  (setq org-directory "~/org/")
-  (setq org-babel-sh-command "zsh"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -176,10 +172,10 @@
       (setq mac-option-modifier 'super)
       (setq mac-function-modifier 'hyper)))
 
-(global-set-key (kbd "<f9>") (lambda ()
+(global-set-key (kbd "<C-x [>") (lambda ()
                              (interactive)
                              (other-window -1)))
-(global-set-key (kbd "<f10>") (lambda ()
+(global-set-key (kbd "<C-x ]>") (lambda ()
                              (interactive)
                              (other-window 1)))
 
@@ -187,10 +183,10 @@
 (windmove-default-keybindings 'super)
 
 ;; Function Keys
-(global-set-key [f1] 'god-mode-all)
-(global-set-key [C-f1] 'god-mode-all)
+;;(global-set-key [f1] )
+;;(global-set-key [C-f1] )
 (global-set-key [f2] 'smartparens-strict-mode)
-(global-set-key [f3] 'delete-trailing-whitespace)
+;;(global-set-key [f3] ')
 (global-set-key [f4] 'comment-or-uncomment-region)
 (global-set-key [f5] 'dired-single-magic-buffer)
 (global-set-key [C-f5] 'projectile-dired)
@@ -198,10 +194,10 @@
 (global-set-key [f7] '+eshell/toggle)
 (global-set-key [f8] 'treemacs)
 (global-set-key [f9] '+fold/toggle)
-(global-set-key [f10] 'treemacs)
+;;(global-set-key [f10] ')
 (global-set-key [f11] 'toggle-frame-fullscreen)
 (global-set-key [f12] 'undo-tree-undo)
-(global-set-key [C-f12] 'vundo)
+;;(global-set-key [C-f12] ')
 (global-set-key [f13] 'call-last-kbd-macro)
 (global-set-key [f14] '+fold/close-all)
 (global-set-key [f15] '+fold/open-all)
@@ -254,6 +250,7 @@
                                      (delete-char -1)
                                      (smartparens-strict-mode t)))
 
+
 (use-package! fix-word
     :config
     (global-set-key (kbd "M-u") #'fix-word-upcase)
@@ -277,60 +274,26 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;                 DIRED COMPANY ETC...
+;;                           MODULES
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Hide boring buffers by regex
-;; (setq helm-boring-buffer-regexp-list
-;;       (quote
-;;        ("\\*.+\\*"
-;;         "\\` \\*"
-;;         "magit.+")))
-
-;; ;; Hide additional buffers based on mode
-;; (defun my-filter-dired-buffers (buffer-list)
-;;   (delq nil (mapcar
-;;              (lambda (buffer)
-;;                (if (eq (with-current-buffer buffer major-mode)  'dired-mode)
-;;                    nil
-;;                  buffer))
-;;              buffer-list)))
-
-;; (advice-add 'helm-skip-boring-buffers :filter-return 'my-filter-dired-buffers)
-
-;; ;; Whitelist buffers that shouldn't be hidden
-;; (setq helm-white-buffer-regexp-list
-;;       (quote
-;;        ("\\*Messages\\*"
-;;         "\\*Warnings\\*"
-;;         "\\*ansi-term"
-;;         "\\*cider-repl.+\\*"
-;;         "\\*cider-error.+\\*"
-;;         "\\*spacemacs\\*"
-;;         "magit:.+")))
-
-(use-package! dired-single
-  :config
-  (define-key dired-mode-map [remap dired-find-file]
-     'dired-single-buffer)
-   (define-key dired-mode-map [remap dired-mouse-find-file-other-window]
-     'dired-single-buffer-mouse)
-   (define-key dired-mode-map [remap dired-up-directory]
-     'dired-single-up-directory)
-  ;; (global-set-key [(f5)] 'dired-single-magic-buffer)
-  ;; (global-set-key [(control f5)]
-  ;;                 (function (lambda nil (interactive)
-  ;;                           (dired-single-magic-buffer default-directory))))
-  ;; (global-set-key [(meta f5)] 'dired-single-toggle-buffer-name)
-  )
-
-(use-package! undo-tree
+(after! undo-tree
   :diminish
   :bind (("C-c _" . undo-tree-visualize))
   :config
   (global-undo-tree-mode +1)
   (undo-tree-auto-save-history))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;                                   ORG
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(after! org-mode
+  (setq org-directory "~/org/")
+  (setq org-babel-sh-command "zsh"))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;

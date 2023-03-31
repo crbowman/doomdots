@@ -25,47 +25,49 @@
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
-       company           ; the ultimate code completion backend
+       (company +childframe)           ; the ultimate code completion backend
        vertico           ; the search engine of the future
 
        :ui
        ;;deft              ; notational velocity for Emacs
        ;;minimap           ; show a map of the code on the side
        ;;neotree           ; a project drawer, like NERDTree for vim
-       ;;zen               ; distraction-free coding or writing
+       ;; vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        ;;tabs              ; a tab bar for Emacs
-       indent-guides     ; highlighted indent columns
-       hydra             ; keybinding pragmatics
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       nav-flash         ; blink cursor line after big motions
-       unicode           ; extended unicode support for various languages
-       window-select     ; visually switch windows
+       ;; doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       ;;hydra             ; keybinding pragmatics
+       ;; ophints           ; highlight the region an operation acts on
+       ;; nav-flash         ; blink cursor line after big motions
        (emoji +unicode)  ; 🙂;;
+       (popup +defaults)   ; tame sudden yet inevitable temporary windows
+       (vc-gutter +pretty) ; vcs diff in the fringe
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
+       indent-guides     ; highlighted indent columns
        ligatures         ; ligatures and symbols to make your code pretty again
        modeline          ; snazzy, Atom-inspired modeline, plus API
-       ophints           ; highlight the region an operation acts on
-       (popup +defaults)   ; tame sudden yet inevitable temporary windows
        treemacs          ; a project drawer, like neotree but cooler
-       (vc-gutter +pretty) ; vcs diff in the fringe
-       vi-tilde-fringe   ; fringe tildes to mark beyond EOB
+       window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
-
+       zen               ; distraction-free coding or writing
+unicode           ; extended unicode support for various languages
+                         ;
        :editor
-       (evil +everywhere); (evil +everywhere); come to the dark side, we have cookies
+
        ;;lispy             ; vim for lisp, for people who don't like vim
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
        ;;god               ; run Emacs commands without modifier keys
+       ;;(evil +everywhere); (evil +everywhere); come to the dark side, we have cookies
+       ;;word-wrap         ; soft wrapping with language-aware indent
        multiple-cursors  ; editing in many places at once
        rotate-text       ; cycle region at point between text candidates
        (format +onsave)  ; automated prettiness
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
        snippets          ; my elves. They type so I don't have to
-       word-wrap         ; soft wrapping with language-aware indent
+
 
        :emacs
        dired             ; making dired pretty [functional]
@@ -82,7 +84,7 @@
        :checkers
        syntax              ; tasing you for every semicolon you forget
        (spell +flyspell) ; tasing you for misspelling mispelling
-       grammar
+       ;;grammar
 
        :tools
        ;;ansible
@@ -93,8 +95,8 @@
        ;;rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
+       ;;tmux              ; an API for interacting with tmux
        debugger          ; FIXME stepping through code, to help you add bugs
-       tmux              ; an API for interacting with tmux
        tree-sitter       ; syntax and parsing, sitting in a tree...
        upload            ; map local to remote projects via ssh/ftp
        direnv
@@ -102,7 +104,7 @@
        editorconfig      ; let someone else argue about tabs vs spaces
        (eval +overlay)     ; run code, run (also, repls)
        gist              ; interacting with github gists
-       lookup              ; navigate your code and its documentation
+       (lookup +docsets +dictionary) ; navigate your code and its documentation
        lsp               ; M-x vscode
        magit             ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
@@ -160,18 +162,18 @@
        (dart +flutter)   ; paint ui and not much else
        (cc +lsp)         ; C > C++ == 1
        (haskell +lsp)    ; a language that's lazier than I am
-       (rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       (rust +lsp)
+       (javascript +lsp) ; all(hope(abandon(ye(who(enter(here))))))
+       (python +lsp)     ; beautiful is better than ugly Fe2O3.unwrap().unwrap().unwrap().unwrap()
        clojure           ; java with a lisp
        common-lisp       ; if you've seen one lisp, you've seen them all
        data              ; config/data formats
        emacs-lisp        ; drown in parentheses
        json              ; At least it ain't XML
-       javascript        ; all(hope(abandon(ye(who(enter(here))))))
        latex             ; writing papers in Emacs has never been so fun
        markdown          ; writing docs for people to ignore
        nix               ; I hereby declare "nix geht mehr!"
        org               ; organize your plain life in plain text
-       python            ; beautiful is better than ugly
        sh                ; she sells {ba,z,fi}sh shells on the C xor
        web               ; the tubes
        yaml              ; JSON, but readable
